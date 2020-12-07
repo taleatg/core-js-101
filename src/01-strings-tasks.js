@@ -250,7 +250,8 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(value) {
+function isString(/* value */) {
+  throw new Error('Not implemented');
   // if (value) {
   //   return true;
   // }
