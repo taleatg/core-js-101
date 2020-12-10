@@ -19,16 +19,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-  if (value1 === '') {
-    return value2;
-  }
-  if (value2 === '') {
-    return value1;
-  }
-  if ((value1 !== '') && (value2 !== '')) {
-    return value1.concat(value2);
-  }
-  return concatenateStrings();
+  return value1.concat(value2);
 }
 
 
@@ -250,15 +241,14 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
-  // if (value) {
-  //   return true;
-  // }
-  // if (!value || undefined) {
-  //   return false;
-  // }
-  // return isString();
+function isString(value) {
+  if ((typeof value === 'string') || (value instanceof String)) {
+    return true;
+  }
+  if (!value) {
+    return false;
+  }
+  return isString();
 }
 
 
