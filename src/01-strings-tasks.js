@@ -203,8 +203,30 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  let rectangle = '┌';
+  for (let i = 0; i < width - 2; i += 1) {
+    rectangle += '─';
+  }
+  rectangle += '┐';
+  rectangle += '\n';
+  for (let i = 0; i < height - 2; i += 1) {
+    if (height > 2) {
+      rectangle += '│';
+      for (let j = 0; j < width - 2; j += 1) {
+        rectangle += ' ';
+      }
+      rectangle += '│';
+      rectangle += '\n';
+    }
+  }
+  rectangle += '└';
+  for (let i = 0; i < width - 2; i += 1) {
+    rectangle += '─';
+  }
+  rectangle += '┘';
+  rectangle += '\n';
+  return rectangle;
 }
 
 
@@ -224,8 +246,10 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const a = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const b = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
+  return str.replace(/[a-z]/gi, (c) => b[a.indexOf(c)]);
 }
 
 /**
@@ -276,8 +300,12 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const result = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
+  return result.indexOf(value);
 }
 
 
