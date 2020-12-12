@@ -206,8 +206,8 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText(/* arr */) {
-  throw new Error('Not implemented');
+function toCsvText(arr) {
+  return arr.join('\n');
 }
 
 /**
@@ -241,13 +241,11 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-  const newarr = [];
   let sum = 0;
-  for (let i = 0; i < arr.length; i += 1) {
-    sum += arr[i];
-    newarr.push(sum);
-  }
-  return newarr;
+  return arr.map((el) => {
+    sum += el;
+    return sum;
+  });
 }
 
 
@@ -351,9 +349,10 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   [ -1, 1, -1, 1 ]      => 0
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
-function getItemsSum(/* arr */) {
-  throw new Error('Not implemented');
+function getItemsSum(arr) {
+  return arr.reduce((acc, i) => acc + i, 0);
 }
+
 
 /**
  * Returns the number of all falsy value in the specified array
@@ -367,8 +366,14 @@ function getItemsSum(/* arr */) {
  *  [ -1, 'false', null, 0 ] => 2
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  let sum = 0;
+  const a = arr.map((el) => !!el === false);
+  a.map((el) => {
+    if (el === true) sum += 1;
+    return (el);
+  });
+  return sum;
 }
 
 /**
@@ -385,9 +390,15 @@ function getFalsyValuesCount(/* arr */) {
  *    [ null, undefined, null ], null => 2
  *    [ true, 0, 1, 'true' ], true => 1
  */
-function findAllOccurences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurences(arr, item) {
+  let sum = 0;
+  arr.map((el) => {
+    if (el === item) sum += 1;
+    return el;
+  });
+  return sum;
 }
+
 
 /**
  * Concatenates all elements from specified array into single string with ',' delimeter
@@ -400,8 +411,8 @@ function findAllOccurences(/* arr, item */) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.join(',');
 }
 
 
@@ -470,8 +481,15 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  let num = start;
+  let el;
+  const arr = new Array(end - start + 1).fill(0);
+  return arr.map(() => {
+    el = num;
+    num += 1;
+    return el;
+  });
 }
 
 /**
@@ -485,8 +503,8 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return [...new Set(arr)];
 }
 
 /**

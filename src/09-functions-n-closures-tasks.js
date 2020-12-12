@@ -46,6 +46,15 @@ function getComposition(/* f, g */) {
  */
 function getPowerFunction(/* exponent */) {
   throw new Error('Not implemented');
+  // return function power(num) {
+  //   let pow = 0;
+  //   let number = num;
+  //   while (pow < exponent) {
+  //     number *= number;
+  //     pow += 1;
+  //   }
+  //   return number;
+  // };
 }
 
 
